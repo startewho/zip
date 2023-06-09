@@ -49,15 +49,17 @@ fn real_main() -> i32 {
 
     let src_dir = &*args[1];
     let dst_file = &*args[2];
-    for &method in [METHOD_STORED, METHOD_DEFLATED, METHOD_BZIP2, METHOD_ZSTD].iter() {
-        if method.is_none() {
-            continue;
-        }
-        match doit(src_dir, dst_file, method.unwrap()) {
-            Ok(_) => println!("done: {src_dir} written to {dst_file}"),
-            Err(e) => println!("Error: {e:?}"),
-        }
-    }
+
+    doit(src_dir, dst_file,METHOD_ZSTD.unwrap());
+    // for &method in [METHOD_STORED, METHOD_DEFLATED, METHOD_BZIP2, METHOD_ZSTD].iter() {
+    //     if method.is_none() {
+    //         continue;
+    //     }
+    //     match doit(src_dir, dst_file, method.unwrap()) {
+    //         Ok(_) => println!("done: {src_dir} written to {dst_file}"),
+    //         Err(e) => println!("Error: {e:?}"),
+    //     }
+    // }
 
     0
 }
